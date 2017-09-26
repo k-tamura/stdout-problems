@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${title}"></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+</head>
+<body style="margin-left: 20px; margin-right: 20px;">
+    <form action="" method="post">
+        <table style="width: 100%;">
+            <tr>
+                <td><h2>
+                        <span class="glyphicon glyphicon-globe"></span> 
+                        <span th:text="#{title.batch.execution}"></span>
+                </h2></td>
+            </tr>
+        </table>
+        <hr style="margin-top: 0px" />
+        <div th:if="${msg == null}">
+            <p th:text="#{message.batch.execution}" /><br /> 
+            <input type="submit" th:value="#{button.batch.execution}" /><br /><br />
+        </div>
+        <div th:if="${msg != null}">
+            <th:block th:utext="${msg}" ></th:block><br /><br />
+        </div>
+    </form>
+</body>
+</html>
