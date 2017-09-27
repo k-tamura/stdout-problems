@@ -4,19 +4,27 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.t246osslab.batch.BatchInterface;
+import org.t246osslab.stdoutproblems.batch.BatchInterface;
 
 @Controller
 public class IndexController {
 
+    protected Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     MessageSource msg;
+    
+    @Value("${remote.registry.host}")
+    String remoteRegistryHost = "localhost";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView init(ModelAndView mav, Locale locale) {
@@ -28,18 +36,16 @@ public class IndexController {
     public ModelAndView process(ModelAndView mav, Locale locale) {
         mav.setViewName("index");
         try {
-            Registry registry = LocateRegistry.getRegistry("localhost");
-            BatchInterface comp = (BatchInterface) registry.lookup("execBatch");
-            int returnVal = comp.executeBatch();
+            Registry registry = LocateRegistry.getRegistry(remoteRegistryHost);
+            BatchInterface batch = (BatchInterface) registry.lookup("execBatch");
+            int returnVal = batch.executeBatch();
             if (returnVal != -1) {
                 mav.addObject("msg", msg.getMessage("message.batch.executed", null, locale));
             }
-            System.out.println("The return value from the server is: " + returnVal);
+            log.info("The return value from the server is: " + returnVal);
         } catch (Exception e) {
-            System.err.println("Exception while trying to echo:");
-            e.printStackTrace();
+            log.error("Exception while trying to echo:", e);
         }
-
         return mav;
     }
 

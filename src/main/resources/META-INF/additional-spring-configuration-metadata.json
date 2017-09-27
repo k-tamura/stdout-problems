@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "remote.registry.host",
+  "type": "java.lang.String",
+  "description": "Host for the remote registry"
+}]}
