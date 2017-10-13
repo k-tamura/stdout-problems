@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
- * Annual processing batch.
+ * Annual batch.
  */
 public class BatchImpl implements BatchInterface {
 
@@ -26,8 +26,8 @@ public class BatchImpl implements BatchInterface {
             File batFile = resource.getFile();
             if (batFile.setExecutable(true)) {
                 ProcessBuilder pb = new ProcessBuilder(batFile.getAbsolutePath());
-                pb.start();
-                //System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
+                Process process = pb.start();
+                // System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
                 return 0;
             }
         } catch (IOException e) {
