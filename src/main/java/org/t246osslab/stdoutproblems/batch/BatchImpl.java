@@ -28,6 +28,7 @@ public class BatchImpl implements BatchInterface {
                 ProcessBuilder pb = new ProcessBuilder(batFile.getAbsolutePath());
                 Process process = pb.start();
                 // System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
+                Thread.sleep(30000); // Sleep 30 seconds instead of post processing
                 return 0;
             }
         } catch (IOException e) {
