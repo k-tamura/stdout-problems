@@ -3,7 +3,7 @@ echo %date% %time%  [Start]                                                     
 echo %date% %time%                                                                                                                         >> logs/result.log
 echo %date% %time%  Initialize                                                                                                             >> logs/result.log
 
-rem the following line means sleeping 3 seconds
+rem the following line means sleeping 3 seconds, instead of initialize processing 
 ping 127.0.0.1 -n 3 > nul
 
 echo %date% %time% ========================================================================================================================>> logs/result.log
