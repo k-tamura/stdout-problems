@@ -1,3 +1,4 @@
+mkdir logs
 echo %date% %time% ========================================================================================================================> logs/result.log
 echo %date% %time%  [Start]                                                                                                                >> logs/result.log
 echo %date% %time%                                                                                                                         >> logs/result.log
