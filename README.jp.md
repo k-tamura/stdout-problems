@@ -37,7 +37,6 @@
 
     $ mvn spring-boot:run
 
-( または``` java -jar target\ROOT.war ```)
 
 以下にアクセスし、バッチ実行ボタンをクリック:
 
