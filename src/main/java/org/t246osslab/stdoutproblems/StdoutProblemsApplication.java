@@ -9,13 +9,9 @@ import org.t246osslab.stdoutproblems.rmiserver.RMIServer;
 @SpringBootApplication
 public class StdoutProblemsApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-        if (!"mode=RMIServer".equals(args[0])) {
-            SpringApplication.run(StdoutProblemsApplication.class, args);
-        }
-        if (!"mode=SpringApp".equals(args[0])) {
-            RMIServer.startServer();
-        }
+    public static void main(String[] args) {
+        SpringApplication.run(StdoutProblemsApplication.class, args);
+        RMIServer.startServer();
     }
 
     @Override
