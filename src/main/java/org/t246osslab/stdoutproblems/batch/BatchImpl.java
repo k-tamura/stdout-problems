@@ -33,6 +33,8 @@ public class BatchImpl implements BatchInterface {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return -1;
     }
