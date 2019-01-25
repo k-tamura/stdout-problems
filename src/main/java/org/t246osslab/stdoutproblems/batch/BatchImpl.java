@@ -31,9 +31,7 @@ public class BatchImpl implements BatchInterface {
                 Thread.sleep(30000); // Sleep 30 seconds instead of post processing
                 return 0;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
