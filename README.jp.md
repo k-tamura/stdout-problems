@@ -48,16 +48,34 @@ Qiitaで解説した標準出力に関する問題を再現するためのアプ
   <kbd>CTRL</kbd>+<kbd>C</kbd>をクリック
   
 
-## System.out.println();を追加して動作確認する
+## 誤った対策
 
 次に、`System.out.println();`を追加して動作確認してみましょう。
+`src/main/java/org/t246osslab/stdoutproblems/batch/BatchImpl.java`にある次の2行のコメントを解除します。
+
+```java
+// import org.apache.commons.io.IOUtils;
+// System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
+```
+
+ビルドして、以下を確認してみて下さい。
 
  - バッチファイルをJava経由で実行 → 正常に完了
  - バッチファイルをWebアプリケーション（RMI）経由で実行 → 画面でボタンをクリックした後に応答が即ぐに返らなくなる
  
-## System.out.println();を削除して、@echo offを追加し動作確認する
+## 正しい対策
 
-次に、`System.out.println();`を削除して、@echo offを追加し動作確認してみましょう。
+最後に、`System.out.println();`を削除して、`@echo off`を追加し動作確認してみましょう。
+先ほど修正した次の2行を再度コメントアウトします。
+
+```java
+import org.apache.commons.io.IOUtils;
+System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
+```
+
+`src/main/resources/annual.bat`の先頭に`@echo off`の１行を追加します。
+ 
+ ビルドして、以下を確認してみて下さい。
 
  - バッチファイルをJava経由で実行 → 正常に完了
  - バッチファイルをWebアプリケーション（RMI）経由で実行 → 画面でボタンをクリックした後に応答が即ぐに返る
