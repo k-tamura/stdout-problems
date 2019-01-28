@@ -13,7 +13,7 @@ import org.springframework.core.io.Resource;
 public class BatchImpl implements BatchInterface {
 
     public static void main(String[] args) {
-        System.out.println("Result: " + new BatchImpl().executeBatch());
+        System.out.println("Result: " + (new BatchImpl().executeBatch() == 0 ? "Success" : "Failure"));
     }
 
     /**
