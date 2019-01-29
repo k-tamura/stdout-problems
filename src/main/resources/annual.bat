@@ -30,14 +30,14 @@ ping 127.0.0.1 -n 1 > nul
 
 echo %date% %time% ========================================================================================================================>> logs/result.log
 echo %date% %time%  [Step4]                                                                                                                >> logs/result.log
-echo %date% %time%  Pre-Import Processing                                                                                                 >> logs/result.log
+echo %date% %time%  Pre-Import Processing                                                                                                  >> logs/result.log
 echo %date% %time%                                                                                                                         >> logs/result.log
 
 ping 127.0.0.1 -n 1 > nul
 
 echo %date% %time% ========================================================================================================================>> logs/result.log
 echo %date% %time%  [Step5]                                                                                                                >> logs/result.log
-echo %date% %time%  Import CSV to Database (This will take a long time, 3 minutes)                           >> logs/result.log
+echo %date% %time%  Import CSV to Database (This will take a long time, 3 minutes)                                                         >> logs/result.log
 echo %date% %time%                                                                                                                         >> logs/result.log
 
 ping 127.0.0.1 -n 180 > nul
