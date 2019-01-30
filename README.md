@@ -86,3 +86,5 @@ System.out.println(IOUtils.toString(process.getInputStream(), "UTF-8"));
  - バッチファイルを単独で実行 → 正常に完了
  - バッチファイルをJava経由で実行 → 正常に完了（途中で停止しない）
  - バッチファイルをWebアプリケーション（RMI）経由で実行 → 正常に完了（画面でボタンをクリックした後に応答が即ぐに返る）
+
+![end](https://github.com/k-tamura/stdout-problems/blob/master/end.png)
